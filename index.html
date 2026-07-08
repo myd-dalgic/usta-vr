@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UstaŞef VR</title>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #111; height: 100%; }
+  #vr-button-container {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    z-index: 10;
+  }
+  #info {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    color: #fff; font-family: sans-serif; text-align: center; z-index: 10;
+    background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 8px;
+  }
+  #loading-overlay {
+    position: fixed; inset: 0; z-index: 20;
+    background: #111; color: #fff; font-family: sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 12px;
+  }
+  #loading-overlay .spinner {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 5px solid #444; border-top-color: #ffb703;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+    <p>Modeller yükleniyor...</p>
+  </div>
+  <div id="info">
+    <h2>🍕 UstaŞef VR 🍔</h2>
+    <p>Meta Quest 3 ile oynamak için "VR'a Gir" butonuna basın</p>
+    <p style="font-size:0.85em;opacity:0.85">Sol joystick: yürü · Sağ joystick: dön · Tetik: etkileşim</p>
+  </div>
+  <div id="vr-button-container"></div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
